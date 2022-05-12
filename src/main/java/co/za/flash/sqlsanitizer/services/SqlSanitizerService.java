@@ -17,12 +17,15 @@ public class SqlSanitizerService {
 
   public String filterSentence(SentenceRequest sentenceRequest) {
 
+    String space = " ";
     var list = wordsRepository.findAll();
 
-    //find and replace logic
+    String [] split = sentenceRequest.toString().split(space);
+
+    if (sentenceRequest != null) {
 
 
+    }
     return null;
   }
-
 }

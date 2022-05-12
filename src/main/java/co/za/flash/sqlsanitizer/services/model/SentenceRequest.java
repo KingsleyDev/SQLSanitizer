@@ -7,7 +7,6 @@ import lombok.Data;
 @Data
 public class SentenceRequest {
 
-    @NotNull
     private String sentence;
 
 }

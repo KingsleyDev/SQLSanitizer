@@ -17,9 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RequestMapping("/flash")
 public class SqlSanitizerController {
-
     ModelMapper modelMapper;
-
     SqlSanitizerService sqlSanitizerService;
     
     @PostMapping("/filter")
@@ -28,7 +26,7 @@ public class SqlSanitizerController {
         var requestMapping = modelMapper.map(sentenceRequest, co.za.flash.sqlsanitizer.services.model.SentenceRequest.class);
         var results = sqlSanitizerService.filterSentence(requestMapping);
 
-        return  ResponseEntity.ok().build();
+        return null;
     }
 
 }
