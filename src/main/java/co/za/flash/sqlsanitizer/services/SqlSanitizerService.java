@@ -8,6 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.StringJoiner;
 
 @Service
 @RequiredArgsConstructor
@@ -17,15 +18,16 @@ public class SqlSanitizerService {
 
   public String filterSentence(SentenceRequest sentenceRequest) {
 
-    String space = " ";
-    var list = wordsRepository.findAll();
+    var words = sentenceRequest.getSentence().split( " ");
 
-    String [] split = sentenceRequest.toString().split(space);
-
-    if (sentenceRequest != null) {
-
-
+    var joiner = new StringJoiner(" ");
+    for(var word : words) {
+      var exists = wordsRepository.existsByWordsIgnoreCase(word);
+      if(exists) {
+        word = "*".repeat(word.length());
+      }
+      joiner.add(word);
     }
-    return null;
+    return joiner.toString();
   }
 }

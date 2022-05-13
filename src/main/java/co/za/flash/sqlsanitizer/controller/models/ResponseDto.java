@@ -1,9 +1,11 @@
 package co.za.flash.sqlsanitizer.controller.models;
 
 import com.google.gson.Gson;
+import lombok.Data;
 
 import java.util.Set;
 
+@Data
 public class ResponseDto<T> {
 
     private Set<String> errors;
